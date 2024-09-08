@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('price')->default(0)->comment('price in pence');
             $table->string('phone_number')->nullable();
             $table->string('email')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
