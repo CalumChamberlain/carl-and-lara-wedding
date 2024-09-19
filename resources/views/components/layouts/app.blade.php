@@ -1,5 +1,5 @@
 <x-layouts.main :title="$title ?? config('app.name')">
-    
+
     <x-ui.app.header />
     <!-- Page Heading -->
     @if (isset($header))
@@ -9,11 +9,9 @@
             </div>
         </header>
     @endif
-    
-    <div class="mx-auto mt-5 max-w-7xl">
-        <div class="sm:px-6 lg:px-8">
-            {{ $slot }}
-        </div>
+
+    <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        {{ $slot }}
     </div>
 
 </x-layouts.main>

@@ -22,7 +22,7 @@ class Supplier extends Model
         ];
     }
 
-    public function note(): MorphMany
+    public function notes(): MorphMany
     {
         return $this->morphMany(Note::class, 'noteable');
     }
