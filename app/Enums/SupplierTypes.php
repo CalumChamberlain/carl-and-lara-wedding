@@ -13,16 +13,21 @@ enum SupplierTypes: int
     public static function labels(): array
     {
         return [
-            self::Venue => 'Venue',
-            self::Photographer => 'Photographer',
-            self::Videographer => 'Videographer',
-            self::FoodSupplier => 'Food Supplier',
-            self::Other => 'Other',
+            self::Venue->value => 'Venue',
+            self::Photographer->value => 'Photographer',
+            self::Videographer->value => 'Videographer',
+            self::FoodSupplier->value => 'Food Supplier',
+            self::Other->value => 'Other',
         ];
     }
 
     public static function values(): array
     {
         return array_column(self::cases(), 'value');
+    }
+
+    public function label(): string
+    {
+        return self::labels()[$this->value];
     }
 }

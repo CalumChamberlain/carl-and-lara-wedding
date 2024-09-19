@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\SupplierTypes;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,6 +12,8 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 class Supplier extends Model
 {
     use HasFactory, HasUlids;
+
+    protected $guarded = [];
 
     protected function casts(): array
     {
@@ -22,5 +25,23 @@ class Supplier extends Model
     public function note(): MorphMany
     {
         return $this->morphMany(Note::class, 'noteable');
+    }
+
+    public function price(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => $value / 100,
+            set: fn ($value) => $value * 100
+        );
+    }
+
+    public function getPhoneLinkAttribute(): string
+    {
+        return 'tel:'.$this->phone_number;
+    }
+
+    public function getEmailLinkAttribute(): string
+    {
+        return 'mailto:'.$this->email;
     }
 }
