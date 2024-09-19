@@ -16,6 +16,7 @@ class SupplierShow extends Component
 
     public function render()
     {
-        return view('livewire.admin.supplier.supplier-show');
+        return view('livewire.admin.supplier.supplier-show')
+            ->title($this->supplier->name);
     }
 }

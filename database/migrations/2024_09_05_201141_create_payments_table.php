@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->ulid('id')->primary();
+            $table->foreignIdFor(\App\Models\Supplier::class);
             $table->integer('amount')->default(0)->comment('amount in pence');
             $table->string('reference')->nullable();
             $table->date('date')->nullable();

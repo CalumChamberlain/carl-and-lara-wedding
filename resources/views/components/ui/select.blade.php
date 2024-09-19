@@ -3,20 +3,28 @@
     'id' => null,
     'name' => null,
     'options' => [],
-    'selected'=>null
+    'selected' => null,
+    'required' => false,
 ])
 
 @php $wireModel = $attributes->get('wire:model');@endphp
 <div>
 
     <div data-model="{{ $wireModel }}" class="mt-1.5 rounded-md shadow-sm">
-        <label for="{{ $id }}"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $label }}</label>
+        @if ($label)
+            <label for="{{ $id ?? '' }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                {{ $label }}
+                @if ($required)
+                    <span class="ml-1 text-red-500">*</span>
+                @endif
+            </label>
+        @endif
         <select {{ $attributes->whereStartsWith('wire:model') }} id="{{ $id }}" name="{{ $name }}"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            <option >Select one</option>
+            <option>Select one</option>
             @foreach ($options as $idoption => $option)
-                <option value="{{ $idoption }}" @if($selected !=null and $idoption===$selected) selected @endif >{{ $option }}</option>
+                <option value="{{ $idoption }}" @if ($selected != null and $idoption === $selected) selected @endif>{{ $option }}
+                </option>
             @endforeach
         </select>
         @error($wireModel)

@@ -7,7 +7,7 @@
             <div class="ml-auto">
                 <x-ui.button tag="a" href="{{ route('admin.supplier.create') }}" variant="primary"
                     wire:click="create">
-                    {{ __('Create supplier') }}
+                    {{ __('Add supplier') }}
                 </x-ui.button>
             </div>
         </div>

@@ -3,7 +3,7 @@
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Livewire\Admin\Dashboard;
-use App\Livewire\Admin\Supplier\SupplierCreate;
+use App\Livewire\Admin\Supplier\SupplierForm;
 use App\Livewire\Admin\Supplier\SupplierIndex;
 use App\Livewire\Admin\Supplier\SupplierShow;
 use App\Livewire\Auth\ForgotPassword;
@@ -38,8 +38,10 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('admin')->group(function () {
         Route::get('dashboard', Dashboard::class)->name('admin.dashboard');
+
         Route::get('suppliers', SupplierIndex::class)->name('admin.suppliers.index');
-        Route::get('suppliers/create', SupplierCreate::class)->name('admin.supplier.create');
+        Route::get('suppliers/create', SupplierForm::class)->name('admin.supplier.create');
+        Route::get('suppliers/{supplier}/edit', SupplierForm::class)->name('admin.supplier.edit');
         Route::get('suppliers/{supplier}', SupplierShow::class)->name('admin.supplier.show');
     });
 });
