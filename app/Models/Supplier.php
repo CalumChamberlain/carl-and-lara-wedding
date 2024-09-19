@@ -27,6 +27,11 @@ class Supplier extends Model
         return $this->morphMany(Note::class, 'noteable');
     }
 
+    public function payments(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Payment::class);
+    }
+
     public function price(): Attribute
     {
         return Attribute::make(

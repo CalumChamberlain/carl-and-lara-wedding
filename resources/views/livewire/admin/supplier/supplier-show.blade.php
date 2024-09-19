@@ -13,6 +13,20 @@
             </div>
         </div>
     </x-slot>
-    <div class="flex sm:flex-col sm:gap-4 sm:items-center">
+    <div class="flex flex-col items-stretch flex-1 gap-4 md:flex-row h-100">
+        <div class="w-full md:w-1/2">
+            <x-ui.h2 class="mb-2">
+                {{ __('Notes') }}
+            </x-ui.h2>
+            <div
+                class="w-full overflow-hidden border border-dashed rounded-lg h-100 bg-pink- bg-gradient-to-br from-white to-zinc-50 border-zinc-200 dark:border-gray-700 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800">
+                <div class="px-10 py-5">
+
+                </div>
+            </div>
+        </div>
+        <div class="w-full md:w-1/2">
+            <livewire:admin.supplier-payments :supplier="$this->supplier" />
+        </div>
     </div>
 </div>

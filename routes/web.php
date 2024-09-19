@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Livewire\Admin\Dashboard;
+use App\Livewire\Admin\Payment\PaymentForm;
 use App\Livewire\Admin\Supplier\SupplierForm;
 use App\Livewire\Admin\Supplier\SupplierIndex;
 use App\Livewire\Admin\Supplier\SupplierShow;
@@ -43,5 +44,6 @@ Route::middleware('auth')->group(function () {
         Route::get('suppliers/create', SupplierForm::class)->name('admin.supplier.create');
         Route::get('suppliers/{supplier}/edit', SupplierForm::class)->name('admin.supplier.edit');
         Route::get('suppliers/{supplier}', SupplierShow::class)->name('admin.supplier.show');
+        Route::get('suppliers/{supplier}/payments/create', PaymentForm::class)->name('admin.supplier.payments.create');
     });
 });
