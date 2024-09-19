@@ -20,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'show_sensitive_data',
     ];
 
     /**
@@ -42,6 +43,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'show_sensitive_data' => 'boolean',
         ];
     }
 }

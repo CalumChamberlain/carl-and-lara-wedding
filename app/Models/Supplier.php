@@ -49,4 +49,14 @@ class Supplier extends Model
     {
         return 'mailto:'.$this->email;
     }
+
+    public function getTotalPaidAttribute(): float
+    {
+        return (float) once(fn () => $this->payments->sum('amount'));
+    }
+
+    public function getRemainingCostAttribute(): float
+    {
+        return $this->price - $this->total_paid;
+    }
 }

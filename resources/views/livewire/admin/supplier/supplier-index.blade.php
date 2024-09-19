@@ -19,7 +19,8 @@
                     description="{{ $supplier->type->label() }}">
                     <div class="flex flex-col justify-between">
                         <small class="text-sm text-gray-500">
-                            {{ Number::currency($supplier->price, in: 'GBP') }}
+                            <livewire:admin.sensitive-data :content="Number::currency($supplier->total_paid, in: 'GBP')" /> /
+                            <livewire:admin.sensitive-data :content="Number::currency($supplier->price, in: 'GBP')" />
                         </small>
                         <x-slot:footer>
                             <x-ui.button tag="a" :href="route('admin.supplier.show', $supplier)" variant="secondary">
