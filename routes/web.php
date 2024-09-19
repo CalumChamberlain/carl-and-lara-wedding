@@ -11,6 +11,7 @@ use App\Livewire\Auth\ForgotPassword;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use App\Livewire\Auth\ResetPassword;
+use App\Livewire\Profile\Edit;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,5 +46,7 @@ Route::middleware('auth')->group(function () {
         Route::get('suppliers/{supplier}/edit', SupplierForm::class)->name('admin.supplier.edit');
         Route::get('suppliers/{supplier}', SupplierShow::class)->name('admin.supplier.show');
         Route::get('suppliers/{supplier}/payments/create', PaymentForm::class)->name('admin.supplier.payments.create');
+
+        Route::get('profile', Edit::class)->name('admin.profile');
     });
 });

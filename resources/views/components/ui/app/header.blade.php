@@ -13,16 +13,19 @@
                 class="flex flex-col justify-start w-full sm:relative sm:flex-row sm:justify-between" x-cloak>
                 @php
                     $navLinks = [];
-                    if(auth()->check()){
-                    $navLinks = [
-                        'Dashboard' => route('admin.dashboard'),
-                        'Suppliers' => route('admin.suppliers.index'),
-                    ];
+                    if (auth()->check()) {
+                        $navLinks = [
+                            'Dashboard' => route('admin.dashboard'),
+                            'Suppliers' => route('admin.suppliers.index'),
+                        ];
                     }
                 @endphp
                 <!-- Navigation Links -->
-                <nav :class="{ 'flex flex-col bg-white dark:bg-gray-900 relative z-50 w-full h-auto px-4 py-5 left-0 mt-16': open, 'hidden':
-                        !open }"
+                <nav :class="{
+                    'flex flex-col bg-white dark:bg-gray-900 relative z-50 w-full h-auto px-4 py-5 left-0 mt-16': open,
+                    'hidden':
+                        !open
+                }"
                     class="items-center space-y-3 sm:space-x-3 sm:space-y-0 sm:mt-0 sm:bg-transparent sm:p-0 sm:relative sm:flex sm:-my-px sm:ml-8"
                     x-cloak>
                     @foreach ($navLinks as $title => $route)
@@ -39,8 +42,11 @@
                     @auth
 
                         <div x-data="{ dropdownOpen: false }"
-                            :class="{ 'block z-50 w-full p-4 border-t border-gray-100 bg-white dark:bg-gray-900 dark:border-gray-800': open, 'hidden':
-                                    !open }"
+                            :class="{
+                                'block z-50 w-full p-4 border-t border-gray-100 bg-white dark:bg-gray-900 dark:border-gray-800': open,
+                                'hidden':
+                                    !open
+                            }"
                             class="relative flex-shrink-0 sm:p-0 sm:flex sm:w-auto sm:bg-transparent sm:items-center sm:ml-1.5"
                             x-cloak>
                             <button @click="dropdownOpen=!dropdownOpen"
@@ -66,8 +72,12 @@
                                 x-cloak>
                                 <div
                                     class="p-4 pt-0 mt-1 space-y-3 text-gray-600 bg-white dark:text-white/70 dark:bg-gray-900 dark:shadow-xl sm:p-2 sm:space-y-0.5 sm:border sm:shadow-md sm:rounded-lg border-gray-200/70 dark:border-white/10">
-                                    <a href="#"
-                                        class="relative flex cursor-pointer hover:text-gray-700 dark:hover:text-white/70 select-none hover:bg-gray-100/70 dark:hover:bg-gray-800/80 items-center rounded-full py-2 px-4 sm:px-2.5 sm:py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                    <a href="{{ route('admin.profile') }}"
+                                        class="relative
+                                        flex cursor-pointer hover:text-gray-700 dark:hover:text-white/70 select-none
+                                        hover:bg-gray-100/70 dark:hover:bg-gray-800/80 items-center rounded-full py-2 px-4
+                                        sm:px-2.5 sm:py-1.5 text-sm outline-none transition-colors
+                                        data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                             stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-2">
