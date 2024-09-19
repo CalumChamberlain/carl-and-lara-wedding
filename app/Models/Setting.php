@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,13 +13,6 @@ class Setting extends Model
     use HasFactory;
 
     protected $fillable = ['key', 'value'];
-
-    // public function getValueAttribute($value)
-    // {
-    //     $string = Str::of($value);
-
-    //     return $string->isJson() ? json_decode($string, true) : $value;
-    // }
 
     public function value(): Attribute
     {
@@ -34,5 +28,15 @@ class Setting extends Model
                 return $value;
             }
         );
+    }
+
+    public static function find(string $key): ?string
+    {
+        return self::where('key', $key)->value('value');
+    }
+
+    public static function getWeddingDate(): Carbon
+    {
+        return Carbon::parse(self::find('wedding_date'));
     }
 }

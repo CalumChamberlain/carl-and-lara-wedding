@@ -3,7 +3,7 @@
         {!! $this->content !!}
     @else
         <span class="italic text-gray-500">
-            {{ __('Sensitive data hidden') }}
+            {{ __('Hidden') }}
         </span>
     @endif
 </span>
