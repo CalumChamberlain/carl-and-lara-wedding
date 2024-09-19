@@ -14,10 +14,10 @@
         </div>
     </x-slot>
     <div class="flex flex-col items-stretch flex-1 gap-4 md:flex-row h-100">
-        <div class="w-full md:w-1/2">
+        <div class="order-last w-full md:w-1/2 md:order-first">
             <livewire:admin.notes :model="$this->supplier" />
         </div>
-        <div class="w-full md:w-1/2">
+        <div class="order-first w-full md:w-1/2 md:order-last">
             <livewire:admin.supplier-payments :supplier="$this->supplier" />
         </div>
     </div>
