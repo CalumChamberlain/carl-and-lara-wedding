@@ -3,16 +3,16 @@
         {{ __('Payment history') }}
         <div class="ml-auto">
             <x-ui.button variant="secondary" tag="a"
-                href="{{ route('admin.supplier.payments.create', $this->supplier) }}">
+                href="{{ route('admin.suppliers.payments.create', $this->supplier) }}">
                 {{ __('Add payment') }}
             </x-ui.button>
         </div>
     </x-ui.h2>
     <div
         class="w-full overflow-hidden border border-dashed rounded-lg h-100 bg-pink- bg-gradient-to-br from-white to-zinc-50 border-zinc-200 dark:border-gray-700 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800">
-        <div class="px-10 py-5">
+        <div class="p-5">
             <div class="flex flex-col gap-4 h-100">
-                <div class="flex items-center px-4 py-4 border-b border-gray-200 dark:border-gray-700">
+                <div class="flex items-center py-4 border-b border-gray-200 dark:border-gray-700">
                     <div>
                         <dt class="text-sm font-bold">Total paid</dt>
                         <dd class="text-sm">

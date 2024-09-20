@@ -30,9 +30,9 @@ class Setting extends Model
         );
     }
 
-    public static function find(string $key): string|array
+    public static function find(string $key): string|array|null
     {
-        return self::where('key', $key)->value('value');
+        return once(fn () => self::where('key', $key)->value('value'));
     }
 
     public static function getWeddingDate(): Carbon

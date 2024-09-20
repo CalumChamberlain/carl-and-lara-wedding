@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
             $table->string('key')->unique();
-            $table->string('value');
+            $table->string('value')->nullable();
             $table->timestamps();
         });
 
@@ -26,23 +26,17 @@ return new class extends Migration
 
         Setting::create([
             'key' => 'wedding_date',
-            'value' => '2024-09-08',
+            'value' => null,
         ]);
 
         Setting::create([
             'key' => 'wedding_venue',
-            'value' => 'The Woods',
+            'value' => null,
         ]);
 
         Setting::create([
             'key' => 'wedding_venue_address',
             'value' => [
-                'address_1' => '123 Main St',
-                'address_2' => 'Apt 1',
-                'city' => 'New York',
-                'state' => 'NY',
-                'zip' => '10001',
-                'country' => 'USA',
             ],
         ]);
     }

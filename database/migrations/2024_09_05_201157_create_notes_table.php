@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->morphs('noteable');
             $table->text('note');
+            $table->foreignIdFor(\App\Models\User::class)->constrained();
             $table->timestamps();
         });
     }

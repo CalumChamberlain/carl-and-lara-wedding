@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('parties', function (Blueprint $table) {
             $table->ulid('id')->primary();
+            $table->string('login_code')->unique();
             $table->string('name');
             $table->timestamps();
         });

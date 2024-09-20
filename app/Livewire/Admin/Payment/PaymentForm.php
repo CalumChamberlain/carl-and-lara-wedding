@@ -39,6 +39,6 @@ class PaymentForm extends Component
             'date' => $this->date,
         ]);
 
-        return redirect()->route('admin.supplier.show', $this->supplier);
+        return redirect()->route('admin.suppliers.show', $this->supplier);
     }
 }

@@ -16,6 +16,7 @@
                     if (auth()->check()) {
                         $navLinks = [
                             'Dashboard' => route('admin.dashboard'),
+                            'Guests' => route('admin.guests.index'),
                             'Suppliers' => route('admin.suppliers.index'),
                             'Settings' => route('admin.settings'),
                         ];

@@ -3,17 +3,17 @@
         {{ __('Notes') }}
     </x-ui.h2>
     <div
-        class="w-full overflow-hidden border border-dashed rounded-lg h-100 bg-pink- bg-gradient-to-br from-white to-zinc-50 border-zinc-200 dark:border-gray-700 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800">
-        <div class="px-10 py-5">
+        class="border shadow rounded-xl bg-card dark:bg-gray-900 dark:text-white">
+        <div class="p-5">
             @forelse ($this->notes as $note)
-                <div class="flex items-center px-4 py-4 border-b border-gray-200 dark:border-gray-700">
+                <div class="flex items-center py-4 border-b border-gray-200 dark:border-gray-700">
                     <div class="flex items-center">
                         <div class="ml-3">
                             <p class="mt-1 text-sm text-gray-500">
                                 {{ $note->note }}
                             </p>
-                            <p class="mt-1 text-sm text-gray-500">
-                                {{ $note->created_at->diffForHumans() }}
+                            <p class="mt-1 text-xs text-gray-500">
+                                {{ $note->user->name}} {{ $note->created_at->diffForHumans() }}
                             </p>
                         </div>
                     </div>

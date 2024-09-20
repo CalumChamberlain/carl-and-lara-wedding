@@ -5,7 +5,7 @@
                 {{ __('Suppliers') }}
             </h2>
             <div class="ml-auto">
-                <x-ui.button tag="a" href="{{ route('admin.supplier.create') }}" variant="primary"
+                <x-ui.button tag="a" href="{{ route('admin.suppliers.create') }}" variant="primary"
                     wire:click="create">
                     {{ __('Add supplier') }}
                 </x-ui.button>
@@ -23,7 +23,7 @@
                             <livewire:admin.sensitive-data :content="Number::currency($supplier->price, in: 'GBP')" />
                         </small>
                         <x-slot:footer>
-                            <x-ui.button tag="a" :href="route('admin.supplier.show', $supplier)" variant="secondary">
+                            <x-ui.button tag="a" :href="route('admin.suppliers.show', $supplier)" variant="secondary">
                                 {{ __('View') }}
                             </x-ui.button>
                             <div class="flex justify-between gap-4 mt-4 h-50">

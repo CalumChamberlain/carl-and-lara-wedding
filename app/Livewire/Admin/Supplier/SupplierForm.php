@@ -63,7 +63,7 @@ class SupplierForm extends Component
         ]);
 
         if ($this->id) {
-            return redirect()->route('admin.supplier.show', $supplier);
+            return redirect()->route('admin.suppliers.show', $supplier);
         }
 
         return redirect()->route('admin.suppliers.index');

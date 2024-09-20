@@ -30,7 +30,7 @@
             </a>
         @endif
     </div>
-    @if ($footer)
+    @if (isset($footer))
         <div class="mt-auto border-t p-7 border-neutral-200/60">
             {{ $footer }}
         </div>
