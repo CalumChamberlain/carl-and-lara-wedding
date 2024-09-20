@@ -17,6 +17,7 @@
                         $navLinks = [
                             'Dashboard' => route('admin.dashboard'),
                             'Suppliers' => route('admin.suppliers.index'),
+                            'Settings' => route('admin.settings'),
                         ];
                     }
                 @endphp

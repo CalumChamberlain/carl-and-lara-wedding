@@ -48,5 +48,6 @@ Route::middleware('auth')->group(function () {
         Route::get('suppliers/{supplier}/payments/create', PaymentForm::class)->name('admin.supplier.payments.create');
 
         Route::get('profile', Edit::class)->name('admin.profile');
+        Route::get('settings', \App\Livewire\Admin\Settings::class)->name('admin.settings');
     });
 });

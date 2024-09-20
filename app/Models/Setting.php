@@ -30,7 +30,7 @@ class Setting extends Model
         );
     }
 
-    public static function find(string $key): ?string
+    public static function find(string $key): string|array
     {
         return self::where('key', $key)->value('value');
     }
