@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\Guest;
 
 use App\Models\Guest;
 use App\Models\Party;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
@@ -67,17 +68,19 @@ class GuestForm extends Component
             'party_id' => ['nullable', 'exists:parties,id'],
         ]);
 
-        $guest = Guest::updateOrCreate([
-            'id' => $this->id,
-        ], [
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name,
-            'type' => $this->type,
-            'email' => $this->email,
-            'phone_number' => $this->phone_number,
-            'all_day' => $this->all_day,
-            'party_id' => Party::firstOrCreate(['id' => $this->party_id], ['name' => $this->party_name])->id,
-        ]);
+        DB::transaction(function () {
+            Guest::updateOrCreate([
+                'id' => $this->id,
+            ], [
+                'first_name' => $this->first_name,
+                'last_name' => $this->last_name,
+                'type' => $this->type,
+                'email' => $this->email,
+                'phone_number' => $this->phone_number,
+                'all_day' => $this->all_day,
+                'party_id' => Party::firstOrCreate(['id' => $this->party_id], ['name' => $this->party_name])->id,
+            ]);
+        });
 
         return redirect()->route('admin.guests.index');
     }

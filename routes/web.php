@@ -30,7 +30,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/admin/dashboard')->name('home');
 Route::get('/login', Login::class)->name('login');
+
 Route::get('/register', Register::class)->name('register');
+
 Route::get('/password/reset', ForgotPassword::class)->name('password.request');
 Route::get('/password/reset/{token}', ResetPassword::class)->name('password.reset');
 
