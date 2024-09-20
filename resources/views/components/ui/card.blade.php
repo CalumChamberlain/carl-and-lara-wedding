@@ -7,7 +7,7 @@
 ])
 
 <div
-    {{ $attributes->merge(['class' => 'rounded-lg overflow-hidden border border-neutral-200/60 bg-white text-neutral-700 shadow-sm flex flex-col h-full']) }}>
+    {{ $attributes->merge(['class' => 'rounded-lg overflow-hidden border border-neutral-200/60 bg-white text-neutral-700 shadow-sm flex flex-col h-full dark:sm:bg-gray-950/50 dark:border-gray-200/10']) }}>
     @if ($image)
         <div class="relative">
             <img src="{{ $image }}" class="w-full h-auto" alt="{{ $title }}" />
@@ -15,7 +15,7 @@
     @endif
     <div class="flex flex-col flex-grow p-7">
         @if ($title)
-            <h2 class="mb-2 text-lg font-bold leading-none tracking-tight">{{ $title }}</h2>
+            <x-ui.h3 class="mb-2">{{ $title }}</x-ui.h3>
         @endif
         @if ($description)
             <p class="mb-5 text-neutral-500">{{ $description }}</p>
