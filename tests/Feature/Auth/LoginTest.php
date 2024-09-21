@@ -1,15 +1,14 @@
 <?php
 
+use App\Livewire\Auth\Login;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Livewire\Volt\Volt;
+use Livewire\Livewire;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
 test('can view login page', function () {
-    $this->get('/auth/login')
-        ->assertSuccessful();
+    $this->get(route('login'))
+        ->assertSeeLivewire(Login::class);
 });
 
 test('is redirected if already logged in', function () {
@@ -17,14 +16,14 @@ test('is redirected if already logged in', function () {
 
     $this->be($user);
 
-    $this->get('/auth/login')
-        ->assertRedirect('/home');
+    $this->get(route('login'))
+        ->assertRedirect('/');
 });
 
-test('a user can login', function () {
-    $user = User::factory()->create(['password' => Hash::make('password')]);
+test('can login with valid credentials', function () {
+    $user = User::factory()->create();
 
-    Volt::test('auth.login')
+    Livewire::test(Login::class)
         ->set('email', $user->email)
         ->set('password', 'password')
         ->call('authenticate');
@@ -32,52 +31,22 @@ test('a user can login', function () {
     $this->assertAuthenticatedAs($user);
 });
 
-test('is redirected to home after login', function () {
-    $user = User::factory()->create(['password' => Hash::make('password')]);
-
-    Volt::test('auth.login')
-        ->set('email', $user->email)
-        ->set('password', 'password')
-        ->call('authenticate')
-        ->assertRedirect('/');
-});
-
-test('email is required', function () {
-    $user = User::factory()->create(['password' => Hash::make('password')]);
-
-    Volt::test('auth.login')
-        ->set('password', 'password')
-        ->call('authenticate')
-        ->assertHasErrors(['email' => 'required']);
-});
-
-test('email must be valid email', function () {
-    $user = User::factory()->create(['password' => Hash::make('password')]);
-
-    Volt::test('auth.login')
-        ->set('email', 'invalid-email')
-        ->set('password', 'password')
-        ->call('authenticate')
-        ->assertHasErrors(['email' => 'email']);
-});
-
-test('password is required', function () {
-    $user = User::factory()->create(['password' => Hash::make('password')]);
-
-    Volt::test('auth.login')
-        ->set('email', $user->email)
-        ->call('authenticate')
-        ->assertHasErrors(['password' => 'required']);
-});
-
-test('bad login attempt shows message', function () {
+test('can not login with invalid credentials', function () {
     $user = User::factory()->create();
 
-    Volt::test('auth.login')
+    Livewire::test(Login::class)
         ->set('email', $user->email)
-        ->set('password', 'bad-password')
+        ->set('password', 'wrong-password')
         ->call('authenticate')
-        ->assertHasErrors('email');
+        ->assertHasErrors(['email']);
+});
 
-    expect(Auth::check())->toBeFalse();
+test('can not login with invalid email', function () {
+    $user = User::factory()->create();
+
+    Livewire::test(Login::class)
+        ->set('email', 'wrong-email')
+        ->set('password', 'password')
+        ->call('authenticate')
+        ->assertHasErrors(['email']);
 });

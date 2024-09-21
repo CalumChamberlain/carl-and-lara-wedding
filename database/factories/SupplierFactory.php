@@ -19,7 +19,6 @@ class SupplierFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'description' => $this->faker->paragraph(),
             'image' => $this->faker->imageUrl(),
             'type' => $this->faker->randomElement(SupplierTypes::values()),
             'price' => $this->faker->numberBetween(100, 1000),
