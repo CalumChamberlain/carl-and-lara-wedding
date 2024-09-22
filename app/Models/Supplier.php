@@ -52,7 +52,7 @@ class Supplier extends Model
 
     public function getTotalPaidAttribute(): float
     {
-        return (float) once(fn () => $this->payments->sum('amount'));
+        return (float) once(fn () => $this->payments->whereNotNull('paid_at')->sum('amount'));
     }
 
     public function getRemainingCostAttribute(): float

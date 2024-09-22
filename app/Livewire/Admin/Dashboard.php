@@ -5,10 +5,12 @@ namespace App\Livewire\Admin;
 use App\Models\Guest;
 use App\Models\Supplier;
 use Livewire\Attributes\Computed;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
 class Dashboard extends Component
 {
+    #[Title('Dashboard')]
     public function render()
     {
         return view('livewire.admin.dashboard');

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Models\Payment;
 use App\Models\Supplier;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
@@ -28,6 +29,12 @@ class SupplierPayments extends Component
 
     public function deletePayment($id)
     {
-        $this->supplier->payments()->findOrFail($id)->delete();
+        Payment::findOrFail($id)->delete();
+    }
+
+    public function markPaid(Payment $payment)
+    {
+        $payment->paid_at = now();
+        $payment->save();
     }
 }
