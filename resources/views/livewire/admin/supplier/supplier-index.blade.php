@@ -1,9 +1,14 @@
 <div>
     <x-slot name="header">
         <div class="flex">
-            <h2 class="text-lg font-semibold leading-tight text-gray-800 dark:text-gray-200">
-                {{ __('Suppliers') }}
-            </h2>
+            <div>
+                <h2 class="text-lg font-semibold leading-tight text-gray-800 dark:text-gray-200">
+                    {{ __('Suppliers') }}
+                </h2>
+                <small class="text-sm text-gray-500">
+                    <livewire:admin.sensitive-data :content="$this->totalPaid . ' / ' . $this->totalPrice" />
+                </small>
+            </div>
             <div class="ml-auto">
                 <x-ui.button tag="a" href="{{ route('admin.suppliers.create') }}" variant="primary"
                     wire:click="create">
